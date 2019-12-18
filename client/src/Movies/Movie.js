@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,7 @@ export default class Movie extends React.Component {
     this.fetchMovie(this.props.match.params.id);
   }
 
-  componentWillReceiveProps(newProps) {
+  componentDidUpdate(newProps) {
     if (this.props.match.params.id !== newProps.match.params.id) {
       this.fetchMovie(newProps.match.params.id);
     }
@@ -42,6 +43,13 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+        <button
+          onClick={() =>
+            this.props.history.push(`/update-movie/${this.state.movie.id}`)
+          }
+          >
+            Edit
+          </button>
       </div>
     );
   }
