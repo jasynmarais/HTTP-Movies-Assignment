@@ -40,7 +40,7 @@ const handleSubmit = e => {
     e.preventDefault();
 
     axios
-     .put(`http://localhost:5000/api/movies/${movieForm.id}`, movieForm)
+     .put(`http://localhost:5002/api/movies/${movieForm.id}`, movieForm)
      .then(res => {
          props.updateMovies(res.data);
          setMovieForm(initialFormValues);
